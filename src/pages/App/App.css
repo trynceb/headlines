@@ -40,3 +40,14 @@
 .main-content-container {
   margin-left: 200px;
 }
+
+.nav-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 200px;
+  float: left;
+  height: 100%;
+  margin-top: 20px
+}
+

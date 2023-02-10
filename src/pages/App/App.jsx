@@ -18,7 +18,9 @@ function App() {
       <Header user={user} setUser={setUser} />
       {user ? (
         <>
-          <NavBar />
+          <div className='nav-container'>
+            <NavBar />
+          </div>
           <div className="main-content-container">
             <Routes>
               <Route path='/home' element={<HeadlinesPage />} />
