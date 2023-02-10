@@ -1,0 +1,17 @@
+.headlines-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .headlines-page h1 {
+    font-size: 36px;
+    color: #333;
+    text-align: center;
+  }
+  
+  .news-feed-column {
+    margin-top: 20px;
+  }
+  

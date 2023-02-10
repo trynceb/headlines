@@ -1,32 +1,19 @@
+import React from 'react'
 import { Link } from 'react-router-dom'
-import * as userService from '../../utilities/users-service'
 
-const NavBar = ({ user, setUser }) => {
-  function handleLogOut() {
-    userService.logOut()
-    setUser(null)
-  }
-
-  const handleLogin = () => {
-    userService.login()
-    setUser(null)
-    
-  }
-
+const Navbar = () => {
   return (
-    <nav>
-      <h1>Welcome { user.name }</h1>
-      <Link to='/orders'>Order History</Link>
-      &nbsp; | &nbsp;
-      <Link to='/orders/new'>New Order</Link>
-      &nbsp; | &nbsp;
-      {user ? (
-        <Link to='' onClick={handleLogOut}>Log Out</Link> 
-      ) : (
-        <Link to='' onClick={handleLogin}>Log In</Link>
-      )}
-    </nav>
+    <div className="navbar-column">
+      <ul className="navbar-list">
+        <li className="navbar-item">
+          <Link className="navbar-link" to="/home">Home</Link>
+        </li>
+        <li className="navbar-item">
+          <Link className="navbar-link" to="/saved">Saved</Link>
+        </li>
+      </ul>
+    </div>
   )
 }
 
-export default NavBar
+export default Navbar

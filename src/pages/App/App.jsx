@@ -3,28 +3,32 @@ import { useState } from 'react';
 import "./App.css";
 import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service'
-import NavBar from '../../components/NavBar/NavBar';
-import NewOrderPage from '../NewOrderPage/NewOrderPage';
+import Header from '../../components/Header/Header';
+import NavBar from '../../components/NavBar/NavBar'
 import AuthPage from '../AuthPage/AuthPage';
-import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
+import HeadlinesPage from '../HeadlinesPage/HeadlinesPage';
+import SavedArticlesPage from '../SavedArticlesPage/SavedArticlesPage';
 
 function App() {
   console.log(getUser())
   const [user, setUser] = useState(getUser())
 
-
   return (
     <main className="App">
-      { user ? 
+      <Header user={user} setUser={setUser} />
+      {user ? (
         <>
-          <NavBar user={user} set={setUser} />
-          <Routes>
-            <Route path='/orders/new' element={<NewOrderPage />} />
-            <Route path='/orders' element={<OrderHistoryPage />} />
-          </Routes>
+          <NavBar />
+          <div className="main-content-container">
+            <Routes>
+              <Route path='/home' element={<HeadlinesPage />} />
+              <Route path='/saved' element={<SavedArticlesPage />} />
+            </Routes>
+          </div>
         </>
-        : 
-        <AuthPage setUser={setUser} />}
+      ) : (
+        <AuthPage setUser={setUser} />
+      )}
     </main>
   );
 }
