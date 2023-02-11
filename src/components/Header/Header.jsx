@@ -14,19 +14,19 @@ const Header = ({ user, setUser }) => {
   }
 
   return (
-    <nav class="navbar navbar-light bg-light">
-      <div class="container">
-        <form class="search-container form-inline">
-          <input class="search-input form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-          <button class="search-button btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <nav className="navbar navbar-light bg-light">
+      <div className="container">
+        <form className="search-container form-inline">
+          <input className="search-input form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+          <button className="search-button btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
         {user ? (
           <>
-            <h1 class="navbar-brand mr-auto">{ user.name }</h1>
-            <button class="btn btn-outline-success my-2 my-sm-0" onClick={handleLogOut}>Log Out</button> 
+            <h1 className="navbar-brand mr-auto">{ user.name }</h1>
+            <button className="btn btn-outline-success my-2 my-sm-0" onClick={handleLogOut}>Log Out</button> 
           </>
         ) : (
-          <button class="btn btn-outline-success my-2 my-sm-0" onClick={handleLogin}>Log In</button>
+          <button className="btn btn-outline-success my-2 my-sm-0" onClick={handleLogin}>Log In</button>
         )}
       </div>
     </nav>

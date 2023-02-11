@@ -6,26 +6,46 @@ const articleSchema = new Schema({
         type: String,
         required: true
     },
-    location: {
+    url: {
         type: String,
         required: true
     },
-    date: {
-        type: Date,
+    articleId: {
+        type: String,
         required: true
     },
     source: {
+        domain: {
+            type: String,
+            required: true
+        }
+    },
+    imageUrl: {
+        type: String
+    },
+    pubDate: {
+        type: Date,
+        required: true
+    },
+    description: {
         type: String,
         required: true
     },
-    body: {
-        type: Text,
-        required: true
-    }
+    content: {
+        type: String,
+        required: false
+    },
+    keywords: [],
+    topics: [],
+    categories: [],
+    companies: [],
+    summary: {
+        type: String,
+        required: false
+    },
+    locations: []
 }, {
     timestamps: true
 })
-
-
 
 module.exports = mongoose.model('Article', articleSchema)
