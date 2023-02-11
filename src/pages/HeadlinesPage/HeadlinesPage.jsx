@@ -10,25 +10,26 @@ const HeadlinesPage = () => {
     const fetchHeadlines = async () => {
       const res = await fetch(`https://api.goperigon.com/v1/headlines?apiKey=${process.env.REACT_APP_API_KEY}`)
       const json = await res.json()
-      console.log(json)
+      console.log(articles + "This is just articles")
 
       if ( res.ok) {
-        console.log(json)
-        setArticles(json.clusters)
+        setArticles(json)
       }
     }
     fetchHeadlines()
   }, [])
 
+  console.log(articles + "THIS")
   const articlesArray = Object.values(articles)
+  console.log(articlesArray + "this is articlesArray")
 
   return (
     <div className="d-flex justify-content-center news-feed-column">
       <div className="col-md-8 bg-white p-3">
         <h1 className="text-center">Headlines Page</h1>
         <ul>
-          {articlesArray.map(article => (
-            <li key={article._id}>
+          {articlesArray.map((article, index) => (
+            <li key={index}>
                 <Article article={article} />
             </li>
           ))}

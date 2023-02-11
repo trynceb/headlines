@@ -8,6 +8,7 @@ import NavBar from '../../components/NavBar/NavBar'
 import AuthPage from '../AuthPage/AuthPage';
 import HeadlinesPage from '../HeadlinesPage/HeadlinesPage';
 import SavedArticlesPage from '../SavedArticlesPage/SavedArticlesPage';
+import DetailsPage from '../DetailsPage/DetailsPage';
 
 function App() {
   console.log(getUser())
@@ -25,6 +26,7 @@ function App() {
             <Routes>
               <Route path='/home' element={<HeadlinesPage />} />
               <Route path='/saved' element={<SavedArticlesPage />} />
+              <Route path='/details/:articleId' element={<DetailsPage />} />
             </Routes>
           </div>
         </>
