@@ -3,6 +3,8 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cors = require('cors');
+const articles = require('./routes/articles');
+
 
 // Load environment variables from .env file
 require('dotenv').config();
@@ -20,6 +22,7 @@ app.use(logger('dev'));
 
 // Use JSON middleware to parse request bodies
 app.use(express.json());
+app.use('/api/articles', articles);
 
 // Serve favicon
 app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
