@@ -4,3 +4,5 @@ const articlesCtrl = require('../../controllers/api/articles')
 
 router.get('/', articlesCtrl.index)
 router.get('/:id', articlesCtrl.show)
+
+module.exports = router

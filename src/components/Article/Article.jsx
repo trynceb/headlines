@@ -7,11 +7,11 @@ const Article = ({ article }) => {
         <>
             <div>
                 <h3>{article.title}</h3>
-                <p>Source: {article.source}</p>
+                <p>Source: {article.source.domian}</p>
                 <p>Date: {article.pubDate}</p>
                 <p>{article.description}</p>
                 <button>Save</button>
-                <Link to={`details/$articleId`}>
+                <Link to={`details/${article.articleId}`}>
                     <button>Read More</button>
                 </Link>
             </div>
