@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import DetailsPage from '../../pages/DetailsPage/DetailsPage';
 
 const Article = ({ article }) => {
     console.log(article);
@@ -11,7 +12,7 @@ const Article = ({ article }) => {
                 <p>Date: {article.pubDate}</p>
                 <p>{article.description}</p>
                 <button>Save</button>
-                <Link to={`/headlines/${article.articleId}`}>
+                <Link to={`/headlines/${article._id}`}>
                     <button>Read More</button>
                 </Link>
             </div>

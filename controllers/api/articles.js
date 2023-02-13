@@ -11,6 +11,6 @@ async function index(req, res) {
 }
 
 async function show(req, res) {
-    const article = await Article.findById(req.params.id)
+    const article = await Article.findOne({articleId:req.params.id})
     res.json(article)
 }

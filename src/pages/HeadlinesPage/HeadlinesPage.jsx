@@ -3,30 +3,20 @@ import * as articlesAPI from '../../utilities/articles-api'
 import './HeadlinesPage.css';
 import Article from '../../components/Article/Article';
 
-const HeadlinesPage = () => {
+const HeadlinesPage = ({ setSharedArticles }) => {
   const [articles, setArticles] = useState([]);
-  // const [savedArticles, setSavedArticles] = useState([])
 
   useEffect(function() {
     async function getArticles() {
       const articles = await articlesAPI.getAll()
       setArticles(articles);
+      setSharedArticles(articles)
       console.log(articles, "This is after setArtcles")
     }
     getArticles()
-
-    // async function getSaved() {
-    //   const getSavedArticles = await articlesAPI.getSaved()
-    //   setSavedArticles(getSavedArticles)
-    // }
-    // getSaved()
   }, []);
 
-  // const handleSave = async (article) => {
-  //   const save = await articlesAPI.save(article)
-  //   setSavedArticles((prevArticles) => [...prevArticles, article])
-  // }
-
+ 
   return (
     <div className="d-flex justify-content-center news-feed-column">
       <div className="col-md-8 bg-white p-3">
@@ -42,3 +32,17 @@ const HeadlinesPage = () => {
 };
 
 export default HeadlinesPage;
+
+// const [savedArticles, setSavedArticles] = useState([])
+
+
+  // async function getSaved() {
+  //   const getSavedArticles = await articlesAPI.getSaved()
+  //   setSavedArticles(getSavedArticles)
+  // }
+  // getSaved()
+
+// const handleSave = async (article) => {
+//   const save = await articlesAPI.save(article)
+//   setSavedArticles((prevArticles) => [...prevArticles, article])
+// }

@@ -1,29 +1,31 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
-import * as articlesAPI from '../../utilities/articles-api'
+import { Link, useParams } from 'react-router-dom';
+// import * as articlesAPI from '../../utilities/articles-api'
 
-const DetailsPage = () => {
-    const [article, setArticle] = useState()
+const DetailsPage = ({ articles }) => {
+    console.log(articles)
+    const [article, setArticle] = useState({})
+    const {id} = useParams()
 
-    useEffect(function() {
-        async function getArticle() {
-            const articleById = await articlesAPI.getById(article)
-            setArticle(articleById)
-            console.log(article + "%cThis is after setArticle", "color: blue")
-        }
-        getArticle()
-    }, [article])
+    console.log(id)
 
+    useEffect(() => getArticle(),[])
+
+    function getArticle() {
+        const currentArticle = articles.find(article => article._id === id)
+        console.log(currentArticle)
+        setArticle(currentArticle)
+    }
+    
     return (
         <div className="container my-5">
             <h1 className="text-center">Details Page</h1>
             <div className="row">
                 <div className="col-md-6 mx-auto">
                     <h2 className="text-center">{article.title}</h2>
-                    <p className="text-center">Source: {article.source}</p>
                     <img src={article.imageUrl} className="img-fluid mb-3" alt={article.title} />
-                    <p>Published Date: {article.pubDate.toString()}</p>
+                    <p>Published Date: {article.pubDate}</p>
                     <p>{article.content}</p>
                     <Link to="/headlines">
                         <button className="btn btn-primary">Back to Headlines</button>
@@ -35,3 +37,4 @@ const DetailsPage = () => {
 }
 
 export default DetailsPage
+

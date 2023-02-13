@@ -1,9 +1,8 @@
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import "./App.css";
 import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service'
-import * as articlesAPI from "../../utilities/articles-api"
 import Header from '../../components/Header/Header';
 import NavBar from '../../components/NavBar/NavBar'
 import AuthPage from '../AuthPage/AuthPage';
@@ -13,16 +12,7 @@ import DetailsPage from '../DetailsPage/DetailsPage';
 
 function App() {
   const [user, setUser] = useState(getUser())
-  const [articles, setArticles] = useState()
-
-  useEffect(function() {
-    async function getArticles() {
-      const articles = await articlesAPI.getAll()
-      setArticles(articles);
-      console.log(articles, "This is after setArtcles")
-    }
-    getArticles()
-  }, []);
+  const [sharedArticles, setSharedArticles] = useState()
 
   return (
     <main className="App">
@@ -34,9 +24,9 @@ function App() {
           </div>
           <div className="main-content-container">
             <Routes>
-              <Route path='/headlines' element={<HeadlinesPage articles={articles} />} />
+              <Route exact path='/headlines' element={<HeadlinesPage setSharedArticles={setSharedArticles} />} />
               <Route path='/saved' element={<SavedArticlesPage />} />
-              <Route path='/headlines/:id' element={<DetailsPage articles={articles} />} />
+              <Route exact path='/headlines/:id' element={<DetailsPage articles={sharedArticles} />} />
             </Routes>
           </div>
         </>
