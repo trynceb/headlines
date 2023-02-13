@@ -11,7 +11,7 @@ const Article = ({ article }) => {
                 <p>Date: {article.pubDate}</p>
                 <p>{article.description}</p>
                 <button>Save</button>
-                <Link to={`details/${article.articleId}`}>
+                <Link to={`/headlines/${article.articleId}`}>
                     <button>Read More</button>
                 </Link>
             </div>

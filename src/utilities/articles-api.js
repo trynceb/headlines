@@ -7,6 +7,13 @@ export function getAll() {
 }
 
 export function getById(id) {
-  return sendRequest(`${BASE_URL}/${id}`);
+  return sendRequest(`${BASE_URL}/saved/${id}`, 'POST');
 }
 
+// export function getSaved() {
+//   return sendRequest(`${BASE_URL}/saved`)
+// }
+
+// export function save(id) {
+//   return sendRequest(`${BASE_URL}/${id}`)
+// }
