@@ -29,3 +29,7 @@ export function getSaved(id) {
 export function save(id) {
   return sendRequest(`${BASE_URL}/${id}`)
 }
+
+export function remove(id) {
+  return sendRequest(`${BASE_URL}/${id}`, 'DELETE', {id})
+}

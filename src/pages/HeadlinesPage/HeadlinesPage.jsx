@@ -16,8 +16,8 @@ const HeadlinesPage = ({ setSharedArticles, setSavedArticles }) => {
     getArticles()
 
     async function getSaved() {
-      const getSavedArticles = await articlesAPI.getSaved()
-      setSavedArticles(getSavedArticles)
+      const savedArticles = JSON.parse(localStorage.getItem('savedArticles')) || [];
+      setSavedArticles(savedArticles)
     }
     getSaved()
   }, []);
@@ -29,14 +29,29 @@ const HeadlinesPage = ({ setSharedArticles, setSavedArticles }) => {
     setSavedArticles((prevArticles) => [...prevArticles, article])
   }
 
- 
+  const handleRemove = async (e, article) => {
+    e.preventDefault()
+    await articlesAPI.remove(article)
+    setSavedArticles(prevArticles => prevArticles.filter(a => a._id !== article._id))
+
+    const savedArticles = JSON.parse(localStorage.getItem("savedArticles")) || []
+    const updatedList = savedArticles.filter(a => a._id !== article._id)
+    localStorage.setItem("savedArticles", JSON.stringify(updatedList))
+
+  }
+
   return (
     <div className="d-flex justify-content-center news-feed-column">
       <div className="col-md-8 bg-white p-3">
         <h1 className="text-center">Headlines Page</h1>
         <ul>
           {articles.reduce((prev, article, index) => {
-            return [...prev, <li key={index}><Article article={article} handleSave={(e) => handleSave(e, article)} /></li>];
+            return [...prev, <li key={index}>
+              <Article 
+                article={article} 
+                handleSave={(e) => handleSave(e, article)}
+                handleRemove={(e) => handleRemove(e, article)} 
+              /></li>];
           }, [])}
         </ul>
       </div>
