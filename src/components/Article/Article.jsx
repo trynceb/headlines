@@ -1,23 +1,22 @@
-import React from 'react'
 import { Link } from 'react-router-dom';
+import './Article.css';
 
-const Article = ({ article, handleSave, handleRemove }) => {
-    console.log(article);
+function Article({ article, handleSave, handleRemove }) {
+    const date = new Date(article.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
     return (
-        <>
-            <div>
-                <h3>{article.title}</h3>
-                <p>Source: {article.source.domain}</p>
-                <p>Date: {article.pubDate}</p>
-                <p>{article.description}</p>
-                <button onClick={handleSave}>Save</button>
-                <button onClick={handleRemove}>Remove</button>
-                <Link to={`/headlines/${article._id}`}>
-                    <button>Read More</button>
-                </Link>
-            </div>
-        </>
+        <div className="article">
+          <h3>{article.title}</h3>
+          <p>Source: {article.source.domain}</p>
+          <p>Date: {date}</p>
+          <p>{article.description}</p>
+          <button className="btn btn-primary" onClick={handleSave}>Save</button>
+          <button className="btn btn-success" onClick={handleRemove}>Remove</button>
+          <Link to={`/headlines/${article._id}`}>
+            <button className="btn btn-info">Read More</button>
+          </Link>
+        </div>
     )
 }
 
-export default Article
+export default Article;

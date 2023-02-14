@@ -1,40 +1,44 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams } from 'react-router-dom';
-// import * as articlesAPI from '../../utilities/articles-api'
+import './DetailsPage.css';
 
 const DetailsPage = ({ articles }) => {
-    console.log(articles)
-    const [article, setArticle] = useState({})
-    const {id} = useParams()
+  const [article, setArticle] = useState({})
+  const {id} = useParams()
 
-    console.log(id)
+  useEffect(() => getArticle(),[])
 
-    useEffect(() => getArticle(),[])
+  function getArticle() {
+    const currentArticle = articles.find(article => article._id === id)
+    setArticle(currentArticle)
+  }
 
-    function getArticle() {
-        const currentArticle = articles.find(article => article._id === id)
-        console.log(currentArticle)
-        setArticle(currentArticle)
-    }
-    
-    return (
-        <div className="container my-5">
-            <h1 className="text-center">Details Page</h1>
-            <div className="row">
-                <div className="col-md-6 mx-auto">
-                    <h2 className="text-center">{article.title}</h2>
-                    <img src={article.imageUrl} className="img-fluid mb-3" alt={article.title} />
-                    <p>Published Date: {article.pubDate}</p>
-                    <p>{article.content}</p>
-                    <Link to="/headlines">
-                        <button className="btn btn-primary">Back to Headlines</button>
-                    </Link>
-                </div>
+  const date = new Date(article.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+  return (
+    <div className="container my-5">
+      <div className="row">
+        <div className="col-md-8 mx-auto">
+          <div className="card">
+            {article.imageUrl && (
+              <img src={article.imageUrl} className="card-img-top" alt={article.title} />
+            )}
+            <div className="card-body">
+              <h2 className="card-title">{article.title}</h2>
+              <ul className="list-group list-group-flush">
+                <li className="list-group-item">Source: {article.source && article.source.domain}</li>
+                <li className="list-group-item">Published Date: {date}</li>
+              </ul>
+              <p className="card-text">{article.content}</p>
             </div>
+            <div className="card-body">
+              <Link to="/headlines" className="card-link">Back to Headlines</Link>
+            </div>
+          </div>
         </div>
-    )
+      </div>
+    </div>
+  )
 }
 
-export default DetailsPage
-
+export default DetailsPage;

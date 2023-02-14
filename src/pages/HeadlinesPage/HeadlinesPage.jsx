@@ -1,6 +1,6 @@
+import './HeadlinesPage.css';
 import React, { useState, useEffect } from 'react';
 import * as articlesAPI from '../../utilities/articles-api'
-import './HeadlinesPage.css';
 import Article from '../../components/Article/Article';
 
 const HeadlinesPage = ({ setSharedArticles, setSavedArticles }) => {
@@ -20,7 +20,7 @@ const HeadlinesPage = ({ setSharedArticles, setSavedArticles }) => {
       setSavedArticles(savedArticles)
     }
     getSaved()
-  }, []);
+  }, [setSavedArticles, setSharedArticles]);
   
   
   const handleSave = async (e, article) => {
@@ -30,6 +30,7 @@ const HeadlinesPage = ({ setSharedArticles, setSavedArticles }) => {
   }
 
   const handleRemove = async (e, article) => {
+    console.log("%cRemove Button Clicked!", "color: green")
     e.preventDefault()
     await articlesAPI.remove(article)
     setSavedArticles(prevArticles => prevArticles.filter(a => a._id !== article._id))
@@ -60,5 +61,3 @@ const HeadlinesPage = ({ setSharedArticles, setSavedArticles }) => {
 };
 
 export default HeadlinesPage;
-
-

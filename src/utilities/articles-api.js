@@ -11,16 +11,8 @@ export function getById(id) {
 }
 
 export async function request(id, method = 'GET') {
-  const options = { method };
-    // const res = await fetch(`/api/articles/${id}`, options);
     return sendRequest(`/api/articles/${id}`)
-    // console.log(res)
-    // res.ok will be false if the status code set to 4xx in the controller action
-    // if (res.ok) return res.json();
-    // throw new Error('Bad Request');
-  }
-  
-
+}
 
 export function getSaved(id) {
   return sendRequest(`${BASE_URL}/saved`,'POST', {id})
@@ -33,3 +25,17 @@ export function save(id) {
 export function remove(id) {
   return sendRequest(`${BASE_URL}/${id}`, 'DELETE', {id})
 }
+
+// export async function getSaved(article) {
+//   const res = await fetch(`${BASE_URL}/save`, {
+//     method: 'POST',
+//     headers: {
+//       'Constent-Type': 'application/json',
+//     },
+//     body: JSON.stringify(article),
+//   })
+//   const savedArticle = await res.json()
+
+//   const savedArticles = JSON.parse(localStorage.getItem('savedArticles')) || []
+//   localStorage.setItem('savedArticles', JSON.stringify([...savedArticles, savedArticle]))
+// }
