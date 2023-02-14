@@ -13,6 +13,7 @@ import DetailsPage from '../DetailsPage/DetailsPage';
 function App() {
   const [user, setUser] = useState(getUser())
   const [sharedArticles, setSharedArticles] = useState()
+  const [savedArticles, setSavedArticles] = useState([])
 
   return (
     <main className="App">
@@ -24,8 +25,8 @@ function App() {
           </div>
           <div className="main-content-container">
             <Routes>
-              <Route exact path='/headlines' element={<HeadlinesPage setSharedArticles={setSharedArticles} />} />
-              <Route path='/saved' element={<SavedArticlesPage />} />
+              <Route exact path='/headlines' element={<HeadlinesPage setSharedArticles={setSharedArticles} setSavedArticles={setSavedArticles} />} />
+              <Route path='/saved' element={<SavedArticlesPage articles={savedArticles} />} />
               <Route exact path='/headlines/:id' element={<DetailsPage articles={sharedArticles} />} />
             </Routes>
           </div>

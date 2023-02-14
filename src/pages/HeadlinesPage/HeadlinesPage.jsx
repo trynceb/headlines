@@ -3,7 +3,7 @@ import * as articlesAPI from '../../utilities/articles-api'
 import './HeadlinesPage.css';
 import Article from '../../components/Article/Article';
 
-const HeadlinesPage = ({ setSharedArticles }) => {
+const HeadlinesPage = ({ setSharedArticles, setSavedArticles }) => {
   const [articles, setArticles] = useState([]);
 
   useEffect(function() {
@@ -14,7 +14,20 @@ const HeadlinesPage = ({ setSharedArticles }) => {
       console.log(articles, "This is after setArtcles")
     }
     getArticles()
+
+    async function getSaved() {
+      const getSavedArticles = await articlesAPI.getSaved()
+      setSavedArticles(getSavedArticles)
+    }
+    getSaved()
   }, []);
+  
+  
+  const handleSave = async (e, article) => {
+    e.preventDefault()
+    await articlesAPI.save(article)
+    setSavedArticles((prevArticles) => [...prevArticles, article])
+  }
 
  
   return (
@@ -23,7 +36,7 @@ const HeadlinesPage = ({ setSharedArticles }) => {
         <h1 className="text-center">Headlines Page</h1>
         <ul>
           {articles.reduce((prev, article, index) => {
-            return [...prev, <li key={index}><Article article={article} /></li>];
+            return [...prev, <li key={index}><Article article={article} handleSave={(e) => handleSave(e, article)} /></li>];
           }, [])}
         </ul>
       </div>
@@ -33,16 +46,4 @@ const HeadlinesPage = ({ setSharedArticles }) => {
 
 export default HeadlinesPage;
 
-// const [savedArticles, setSavedArticles] = useState([])
 
-
-  // async function getSaved() {
-  //   const getSavedArticles = await articlesAPI.getSaved()
-  //   setSavedArticles(getSavedArticles)
-  // }
-  // getSaved()
-
-// const handleSave = async (article) => {
-//   const save = await articlesAPI.save(article)
-//   setSavedArticles((prevArticles) => [...prevArticles, article])
-// }

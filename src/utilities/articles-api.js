@@ -22,10 +22,10 @@ export async function request(id, method = 'GET') {
   
 
 
-// export function getSaved() {
-//   return sendRequest(`${BASE_URL}/saved`)
-// }
+export function getSaved(id) {
+  return sendRequest(`${BASE_URL}/saved`,'POST', {id})
+}
 
-// export function save(id) {
-//   return sendRequest(`${BASE_URL}/${id}`)
-// }
+export function save(id) {
+  return sendRequest(`${BASE_URL}/${id}`)
+}
