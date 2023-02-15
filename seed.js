@@ -1,13 +1,18 @@
 require('dotenv').config();
 require('./config/database');
 
+
+const { default: mongoose } = require('mongoose');
 const Article = require('./models/article');
 
-// IIFE - Immediately Invoked Function Expression
-(async function() {
+mongoose.connect(`${DATABASE_URL}`, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+})
 
-  await Article.deleteMany({});
-  const articles = await Article.create([
+const articles = [
     {
         title: "Elon Musk announces plans for a lunar colony",
         url: "https://www.space.com/elon-musk-lunar-colony-announcement",
@@ -97,13 +102,36 @@ const Article = require('./models/article');
         companies: ["The Pokemon Company"],
         summary: "The Pokemon Company has announced a new Pokemon game for 2022 release, featuring new Pokemon, regions, and gameplay mechanics.",
         locations: []
-    }  
-])
+    }
+  ];
 
-  console.log(articles)
+  async function seedArticles() {
+    try {
+      await Article.deleteMany(); // remove existing articles
+      await Article.create(articles); // add new articles
+      console.log('Database seeded');
+    } catch (err) {
+      console.error(err);
+    } finally {
+      mongoose.disconnect(); // close the database connection
+    }
+  }
+  
+seedArticles();
 
-  process.exit();
 
-})();
+// // IIFE - Immediately Invoked Function Expression
+// (async function() {
+
+//   await Article.deleteMany({});
+//   const articles = await Article.create([
+      
+// ])
+
+//   console.log(articles)
+
+//   process.exit();
+
+// })();
 
 

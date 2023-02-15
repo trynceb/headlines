@@ -29,6 +29,8 @@ function App() {
                 path="/headlines"
                 element={
                   <HeadlinesPage
+                    savedArticles={savedArticles}
+                    sharedArticles={sharedArticles}
                     setSharedArticles={setSharedArticles}
                     setSavedArticles={setSavedArticles}
                   />
@@ -36,7 +38,7 @@ function App() {
               />
               <Route
                 path="/saved"
-                element={<SavedArticlesPage articles={savedArticles} />}
+                element={<SavedArticlesPage articles={savedArticles} setSavedArticles={setSavedArticles} />}
               />
               <Route
                 exact

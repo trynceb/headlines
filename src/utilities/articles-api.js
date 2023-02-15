@@ -23,19 +23,6 @@ export function save(id) {
 }
 
 export function remove(id) {
-  return sendRequest(`${BASE_URL}/${id}`, 'DELETE', {id})
+  console.log("%cBefore sendRequest!", "color: purple")
+  return sendRequest(`${BASE_URL}/saved/${id}`, 'DELETE')
 }
-
-// export async function getSaved(article) {
-//   const res = await fetch(`${BASE_URL}/save`, {
-//     method: 'POST',
-//     headers: {
-//       'Constent-Type': 'application/json',
-//     },
-//     body: JSON.stringify(article),
-//   })
-//   const savedArticle = await res.json()
-
-//   const savedArticles = JSON.parse(localStorage.getItem('savedArticles')) || []
-//   localStorage.setItem('savedArticles', JSON.stringify([...savedArticles, savedArticle]))
-// }
