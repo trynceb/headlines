@@ -9,11 +9,6 @@ const SavedArticlesPage = ({ articles, setSavedArticles }) => {
     await articlesAPI.remove(article)
     console.log(articles, "%cAfter Remove", "color: green")
     setSavedArticles(prevArticles => prevArticles.filter(a => a._id !== article._id))
-
-    const savedArticles = JSON.parse(localStorage.getItem(articles)) || []
-    const updatedList = savedArticles.filter(a => a._id !== article._id)
-    localStorage.setItem(savedArticles, JSON.stringify(updatedList))
-    console.log(savedArticles, "%cAfter deleting!", "color: orange")
   }
 
   return (

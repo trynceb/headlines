@@ -2,10 +2,10 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const articleSchema = new Schema({
-    user: {
+    users: [{
         type: Schema.Types.ObjectId,
         ref: "User"
-    },
+    }],
     title: {
         type: String,
         required: true
@@ -47,7 +47,7 @@ const articleSchema = new Schema({
         type: String,
         required: false
     },
-    locations: []
+    locations: [],
 }, {
     timestamps: true
 })

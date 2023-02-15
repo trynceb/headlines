@@ -31,7 +31,7 @@ export function checkToken() {
 
 export function getUser() {
     const token = getToken()
-    console.log(token)
+    // console.log(token)
     return token ? JSON.parse(atob(token.split('.')[1])).user : null
 }
 

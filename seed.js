@@ -5,7 +5,7 @@ require('./config/database');
 const { default: mongoose } = require('mongoose');
 const Article = require('./models/article');
 
-mongoose.connect(`${DATABASE_URL}`, {
+mongoose.connect(`${process.env.DATABASE_URL}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,

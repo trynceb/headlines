@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import * as articlesAPI from '../../utilities/articles-api'
 import Article from '../../components/Article/Article';
 
-const HeadlinesPage = ({ savedArticles, sharedArticles, setSharedArticles, setSavedArticles }) => {
+const HeadlinesPage = ({ setSharedArticles, setSavedArticles }) => {
   const [articles, setArticles] = useState([]);
 
   useEffect(function() {
@@ -11,22 +11,23 @@ const HeadlinesPage = ({ savedArticles, sharedArticles, setSharedArticles, setSa
       const articles = await articlesAPI.getAll()
       setArticles(articles);
       setSharedArticles(articles)
-      console.log(articles, "This is after setArtcles")
+      // console.log(articles, "This is after setArtcles")
     }
     getArticles()
 
     async function getSaved() {
-      const savedArticles = JSON.parse(localStorage.getItem('savedArticles')) || [];
+      const savedArticles = await articlesAPI.getSaved()
       setSavedArticles(savedArticles)
     }
     getSaved()
   }, []);
   
   
-  const handleSave = async (e, article) => {
+  const handleSave = async (e, articleId) => {
     e.preventDefault()
-    await articlesAPI.save(article)
-    setSavedArticles((prevArticles) => [...prevArticles, article])
+    const savedArticles = await articlesAPI.save(articleId)
+    console.log(savedArticles)
+    // setSavedArticles((prevArticles) => [...prevArticles, article])
   }
 
   return (
@@ -38,7 +39,7 @@ const HeadlinesPage = ({ savedArticles, sharedArticles, setSharedArticles, setSa
             return [...prev, <li key={index}>
               <Article 
                 article={article} 
-                handleSave={(e) => handleSave(e, article)} 
+                handleSave={handleSave} 
               /></li>];
           }, [])}
         </ul>
