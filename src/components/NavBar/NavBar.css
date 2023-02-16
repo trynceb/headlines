@@ -1,19 +1,29 @@
-.navbar-column {
+.navbar {
   display: flex;
   justify-content: center;
+  margin-top: 15px;
+  margin-bottom: 20px;
 }
 
 .navbar-list {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .navbar-item {
+  display: flex;
+  align-items: center;
   margin-right: 1rem;
 }
 
 .navbar-link {
   text-decoration: none;
   color: #007bff;
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }

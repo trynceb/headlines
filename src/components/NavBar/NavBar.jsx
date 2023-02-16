@@ -1,18 +1,18 @@
-import './NavBar.css'
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './NavBar.css';
 
-const Navbar = () => {
+const NavBar = () => {
   return (
-    <nav className="col-3">
-      <ul className="nav flex-column">
-        <li className="nav-item">
-          <Link className="nav-link active" to="/headlines">
+    <nav className="navbar">
+      <ul className="navbar-list">
+        <li className="navbar-item">
+          <Link className="navbar-link" to="/headlines">
             Home
           </Link>
         </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/saved">
+        <li className="navbar-item">
+          <Link className="navbar-link" to="/saved">
             Saved
           </Link>
         </li>
@@ -21,4 +21,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavBar;
