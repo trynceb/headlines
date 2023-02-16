@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import * as articlesAPI from '../../utilities/articles-api'
 import Article from '../../components/Article/Article';
 
-const HeadlinesPage = ({ setSharedArticles, setSavedArticles }) => {
+const HeadlinesPage = ({ savedArticles, setSharedArticles, setSavedArticles, handleRemove }) => {
   const [articles, setArticles] = useState([]);
 
   useEffect(function() {
@@ -40,7 +40,9 @@ const HeadlinesPage = ({ setSharedArticles, setSavedArticles }) => {
             return [...prev, <li key={index}>
               <Article 
                 article={article} 
+                savedArticles={savedArticles}
                 handleSave={handleSave} 
+                handleRemove={handleRemove}
               /></li>];
           }, [])}
         </ul>
