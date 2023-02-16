@@ -11,6 +11,7 @@ Headlines is a powerful news aggregator that consolidates multiple news sources 
 
 ## Deployment
 
+https://headlines.herokuapp.com/headlines
 
 ## Tech Stack
 
