@@ -28,23 +28,27 @@ const HeadlinesPage = ({
 
   return (
     <div className="d-flex justify-content-center news-feed-column">
-      <div className="col-md-8 bg-white p-3">
-        <h1 className="text-left">Headlines</h1>
-        <ul>
-          {articles.reduce((prev, article, index) => {
-            return [
-              ...prev,
-              <li key={index}>
-                <Article
-                  article={article}
-                  savedArticles={savedArticles}
-                  handleSave={handleSave}
-                  handleRemove={handleRemove}
-                />
-              </li>,
-            ];
-          }, [])}
-        </ul>
+      <div className="col-md-8 p-3">
+        <div className="bg-white rounded-3 p-3">
+          <div className="d-flex justify-content-between align-items-center mb-3">
+            <h1 className="headlines-title">Headlines</h1>
+          </div>
+          <ul>
+            {articles.reduce((prev, article, index) => {
+              return [
+                ...prev,
+                <li key={index}>
+                  <Article
+                    article={article}
+                    savedArticles={savedArticles}
+                    handleSave={handleSave}
+                    handleRemove={handleRemove}
+                  />
+                </li>,
+              ];
+            }, [])}
+          </ul>
+        </div>
       </div>
     </div>
   );

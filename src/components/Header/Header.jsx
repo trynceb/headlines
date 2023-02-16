@@ -14,7 +14,7 @@ const Header = ({ user, setUser }) => {
   };
 
   return (
-    <nav className="navbar navbar-expand-md navbar-light bg-light">
+    <nav className="navbar navbar-expand-md navbar-light bg-light rounded-nav">
       <div className="container">
         <Link to="/" className="navbar-brand fs-2 fw-bold">Headlines</Link>
         <button
