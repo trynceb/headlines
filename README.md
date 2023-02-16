@@ -5,8 +5,9 @@ Headlines is a powerful news aggregator that consolidates multiple news sources 
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+[![HG2gGC7.md.png](https://iili.io/HG2gGC7.md.png)](https://freeimage.host/i/HG2gGC7)
 
+[![HG2g8CP.md.png](https://iili.io/HG2g8CP.md.png)](https://freeimage.host/i/HG2g8CP)
 
 ## Deployment
 

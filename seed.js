@@ -13,24 +13,6 @@ mongoose.connect(`${process.env.DATABASE_URL}`, {
 
 const articles = [
     {
-        title: "Local Cat Elected as Mayor",
-        url: "https://iili.io/HG2hvAF.jpg",
-        articleId: "20",
-        source: {
-            domain: "Funny Stuff"
-        },
-        imageUrl: "https://www.funnystuff.com/wp-content/uploads/2022/01/cat-mayor.jpg",
-        pubDate: new Date("2022-01-15"),
-        description: "A local cat has been elected as mayor of a small town",
-        content: "In a surprising turn of events, a local cat named Whiskers has been elected as the new mayor of the small town of Meowville. Whiskers won the election by a landslide, with voters citing his calm demeanor and adorable whiskers as key factors in their decision. The new mayor's first order of business is to institute mandatory nap times for all town employees.",
-        keywords: ["Cat", "Mayor", "Election", "Small town"],
-        topics: ["Pets", "Politics"],
-        categories: ["Humor"],
-        companies: [],
-        summary: "In a surprising turn of events, a local cat named Whiskers has been elected as the new mayor of the small town of Meowville, promising mandatory nap times for all town employees.",
-        locations: ["Meowville"]
-    },
-    {
         title: "Elon Musk announces plans for a lunar colony",
         url: "https://www.space.com/elon-musk-lunar-colony-announcement",
         articleId: "30",
@@ -157,41 +139,23 @@ const articles = [
         locations: []
     },
     {
-        title: "World's Largest Rubber Band Ball Stolen by Rival Town",
-        url: "https://www.fakenews.com/worlds-largest-rubber-band-ball-stolen",
-        articleId: "10",
+        title: "Local Cat Elected as Mayor",
+        url: "https://iili.io/HG2hvAF.jpg",
+        articleId: "20",
         source: {
-            domain: "Fake News"
+            domain: "Funny Stuff"
         },
-        imageUrl: "https://iili.io/HG2h199.th.webp",
-        pubDate: new Date("2022-01-10"),
-        description: "The world's largest rubber band ball has been stolen by a rival town",
-        content: "The small town of Redwood was devastated to discover that their prized possession, the world's largest rubber band ball, had been stolen by their neighboring town, Oakville. The Redwood Mayor has issued a statement condemning the 'unfriendly' actions of Oakville and has promised to get the ball back, 'no matter how much it bounces around'.",
-        keywords: ["Rubber band ball", "World record", "Stolen", "Rival town"],
-        topics: ["World records", "Rivalry"],
+        imageUrl: "https://www.funnystuff.com/wp-content/uploads/2022/01/cat-mayor.jpg",
+        pubDate: new Date("2022-01-15"),
+        description: "A local cat has been elected as mayor of a small town",
+        content: "In a surprising turn of events, a local cat named Whiskers has been elected as the new mayor of the small town of Meowville. Whiskers won the election by a landslide, with voters citing his calm demeanor and adorable whiskers as key factors in their decision. The new mayor's first order of business is to institute mandatory nap times for all town employees.",
+        keywords: ["Cat", "Mayor", "Election", "Small town"],
+        topics: ["Pets", "Politics"],
         categories: ["Humor"],
         companies: [],
-        summary: "The small town of Redwood is outraged as their rival town, Oakville, has stolen their prized possession, the world's largest rubber band ball.",
-        locations: ["Redwood", "Oakville"]
+        summary: "In a surprising turn of events, a local cat named Whiskers has been elected as the new mayor of the small town of Meowville, promising mandatory nap times for all town employees.",
+        locations: ["Meowville"]
     },
-    {
-        title: "Local Man Discovers Secret to Never Losing at Monopoly Again",
-        url: "https://www.fakenews.com/local-man-discovers-secret-to-never-losing-at-monopoly-again",
-        articleId: "100",
-        source: {
-        domain: "FakeNews.com"
-        },
-        imageUrl: "https://iili.io/HG2jQ0Q.webp",
-        pubDate: new Date("2022-12-23"),
-        description: "A local man claims to have found the secret to winning every game of Monopoly he plays",
-        content: "John Smith, a self-proclaimed Monopoly enthusiast, has claimed that he has found the secret to winning every game of Monopoly he plays. According to Smith, the key to his success is to always buy the purple properties, and to never buy the utilities or railroads. He claims that this strategy has helped him win every game he has played in the past six months. Smith's friends and family are skeptical, but he insists that he has cracked the code to the popular board game.",
-        keywords: ["Monopoly", "Board games", "Strategy"],
-        topics: ["Entertainment"],
-        categories: ["Humor"],
-        companies: [],
-        summary: "John Smith claims to have discovered the secret to winning every game of Monopoly he plays: always buy the purple properties and never buy the utilities or railroads.",
-        locations: []
-        }
   ];
 
   async function seedArticles() {
