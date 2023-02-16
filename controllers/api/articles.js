@@ -5,7 +5,6 @@ module.exports = {
     index,
     show,
     save,
-    saved,
     remove
 }
 
@@ -22,20 +21,33 @@ async function show(req, res) {
 async function save(req, res) {
     const article = await Article.findById(req.body.id)
     if (article) {
-        article.users.push(req.user._id)
-        await article.save()
-        const user = await User.findById(req.user._id).populate("articles").exec()
-        console.log(user)
+        if (!article.users.includes(req.user._id)) {
+            article.users.push(req.user._id)
+            await article.save()
+            const savedArticles = await Article.find({ users: req.user._id })
+            res.json(savedArticles)
+        }
     }
-    console.log(req.user)
 }
 
-async function saved(req, res) {
-    const savedArticles = await Article.find({ saved: true })
-    res.json(savedArticles)
+async function remove(req, res) {
+    const article = await Article.findById(req.body.id)
+    if (article) {
+        if (article.users.includes(req.user._id)) {
+            article.users.pop(req.user._id)
+            await article.save()
+            const savedArticles = await Article.find({ users: req.user._id })
+            res.json(savedArticles)
+        }
+    }
 }
 
-async function remove(req,res) {
-    const article = await Article.findOne({ _id: req.params.id, saved: true })
-    res.json(article)
-}
+// async function saved(req, res) {
+//     const savedArticles = await Article.find({ saved: true })
+//     res.json(savedArticles)
+// }
+
+// async function remove(req,res) {
+//     const article = await Article.findOne({ _id: req.params.id, saved: true })
+//     res.json(article)
+// }

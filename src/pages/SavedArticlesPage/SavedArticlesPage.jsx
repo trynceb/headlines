@@ -6,9 +6,9 @@ const SavedArticlesPage = ({ articles, setSavedArticles }) => {
 
   const handleRemove = async (e, article) => {
     e.preventDefault()
-    await articlesAPI.remove(article)
+    const savedArticles = await articlesAPI.remove(article)
     console.log(articles, "%cAfter Remove", "color: green")
-    setSavedArticles(prevArticles => prevArticles.filter(a => a._id !== article._id))
+    setSavedArticles(savedArticles)
   }
 
   return (

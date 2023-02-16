@@ -5,6 +5,10 @@ const bcrypt = require('bcrypt')
 const SALT_ROUNDS = 6
 
 const userSchema = new Schema({
+    articles: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Article',
+    }],
     name: {
         type: String, required: true
     },

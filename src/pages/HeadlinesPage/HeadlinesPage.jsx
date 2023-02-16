@@ -15,11 +15,11 @@ const HeadlinesPage = ({ setSharedArticles, setSavedArticles }) => {
     }
     getArticles()
 
-    async function getSaved() {
-      const savedArticles = await articlesAPI.getSaved()
-      setSavedArticles(savedArticles)
-    }
-    getSaved()
+    // async function getSaved() {
+    //   const savedArticles = await articlesAPI.getSaved()
+    //   setSavedArticles(savedArticles)
+    // }
+    // getSaved()
   }, []);
   
   
@@ -27,6 +27,7 @@ const HeadlinesPage = ({ setSharedArticles, setSavedArticles }) => {
     e.preventDefault()
     const savedArticles = await articlesAPI.save(articleId)
     console.log(savedArticles)
+    setSavedArticles(savedArticles)
     // setSavedArticles((prevArticles) => [...prevArticles, article])
   }
 
