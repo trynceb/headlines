@@ -4,7 +4,7 @@ import './SavedArticlesPage.css'
 
 const SavedArticlesPage = ({ articles, savedArticles, handleRemove }) => {
   return (
-    <div className="d-flex justify-content-center news-feed-column">
+    <div className="d-flex justify-content-center saved-feed-column">
       <div className="col-md-8 bg-white p-3">
         <h1 className="page-title">Saved Articles</h1>
         <ul className="articles">
