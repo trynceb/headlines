@@ -4,9 +4,11 @@ import Article from '../../components/Article/Article';
 
 const SavedArticlesPage = ({ articles, setSavedArticles }) => {
 
-  const handleRemove = async (e, article) => {
+  const handleRemove = async (e, articleId) => {
+    console.log("%cRemove Button Clicked!", "color: red")
     e.preventDefault()
-    const savedArticles = await articlesAPI.remove(article)
+    console.log(articleId)
+    const savedArticles = await articlesAPI.remove(articleId)
     console.log(articles, "%cAfter Remove", "color: green")
     setSavedArticles(savedArticles)
   }
@@ -20,7 +22,7 @@ const SavedArticlesPage = ({ articles, setSavedArticles }) => {
               <li key={index} className="article">
                 <Article 
                 article={article}
-                handleRemove={(e) => handleRemove(e, article)}
+                handleRemove={handleRemove}
                 />
               </li>
             ))}

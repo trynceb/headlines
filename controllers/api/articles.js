@@ -31,7 +31,9 @@ async function save(req, res) {
 }
 
 async function remove(req, res) {
+    console.log(req.body.id)
     const article = await Article.findById(req.body.id)
+    console.log(article)
     if (article) {
         if (article.users.includes(req.user._id)) {
             article.users.pop(req.user._id)

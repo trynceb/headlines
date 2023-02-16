@@ -11,7 +11,7 @@ function Article({ article, handleSave, handleRemove }) {
           <p>Date: {date}</p>
           <p>{article.description}</p>
           <button className="btn btn-primary" onClick={(e) => handleSave(e, article._id)}>Save</button>
-          <button className="btn btn-success" onClick={handleRemove}>Remove</button>
+          <button className="btn btn-success" onClick={(e) => handleRemove(e, article._id)}>Remove</button>
           <Link to={`/headlines/${article._id}`}>
             <button className="btn btn-info">Read More</button>
           </Link>

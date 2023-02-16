@@ -18,14 +18,15 @@ export function save(id) {
   return sendRequest(`${BASE_URL}/saved`, 'POST', {id})
 }
 
-export function getSaved(id) {
-  return sendRequest(`${BASE_URL}/saved`, 'POST', {id})
-}
-          
 export function remove(id) {
-  // console.log("%cBefore sendRequest!", "color: purple")
-  return sendRequest(`${BASE_URL}/saved/${id}`, 'DELETE')
+  console.log("%cBefore sendRequest!", "color: purple")
+  return sendRequest(`${BASE_URL}/saved/${id}`, 'DELETE', {id})
 }
+
+// export function getSaved(id) {
+//   return sendRequest(`${BASE_URL}/saved`, 'POST', {id})
+// }
+          
 
 
 
