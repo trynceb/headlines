@@ -2,7 +2,6 @@ import * as usersAPI from "./users-api"
 
 export async function signUp(userData) {
     const token = await usersAPI.signUp(userData)
-    // Persist the "token"
     localStorage.setItem('token', token)
     return getUser()
 }
@@ -31,7 +30,6 @@ export function checkToken() {
 
 export function getUser() {
     const token = getToken()
-    // console.log(token)
     return token ? JSON.parse(atob(token.split('.')[1])).user : null
 }
 

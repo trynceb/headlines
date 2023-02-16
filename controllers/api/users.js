@@ -10,7 +10,6 @@ module.exports = {
 
 async function create(req, res) {
     try {
-        // Add the user to the database
         const user = await User.create(req.body)
         const token = createJWT(user)
         res.json(token)
@@ -38,8 +37,6 @@ function checkToken(req, res) {
     res.json(req.exp)
 }
 
-
-/*-- Helper Function --*/
 function createJWT(user) {
     return jwt.sign(
         { user },

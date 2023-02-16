@@ -1,7 +1,6 @@
 require('dotenv').config();
 require('./config/database');
 
-
 const { default: mongoose } = require('mongoose');
 const Article = require('./models/article');
 
@@ -118,20 +117,3 @@ const articles = [
   }
   
 seedArticles();
-
-
-// // IIFE - Immediately Invoked Function Expression
-// (async function() {
-
-//   await Article.deleteMany({});
-//   const articles = await Article.create([
-      
-// ])
-
-//   console.log(articles)
-
-//   process.exit();
-
-// })();
-
-
