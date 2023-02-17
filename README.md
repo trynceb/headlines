@@ -19,7 +19,7 @@ The client-side of Headlines is built using React, Bootstrap, and CSS. On the se
 
 We use the NewsCaf API to retrieve a vast list of articles from various sources worldwide.
 
-## Features
+## Features / User Stories
 
 - Login/Logout functionality
 - Access to a vast list of articles from various sources worldwide
